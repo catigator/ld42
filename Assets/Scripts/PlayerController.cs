@@ -18,12 +18,20 @@ public class PlayerController : MonoBehaviour {
 
 	public Text healthText;
 	public SpriteRenderer subFlame;
+	public CameraFollow cf;
+
+	public BoardController bc;
 
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D>();
+		am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		health = maxHealth;
+		cf = GameObject.Find("LowResCamera").GetComponent<CameraFollow>();
+		cf.FindPlayer();
+		bc = GameObject.Find("BoardController").GetComponent<BoardController>();
 		SetHealthText();
+
 	}
 	
 	// Update is called once per frame
@@ -68,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void SetHealthText() {
-		healthText.text = "HEALTH:\n" + health.ToString();
+		bc.healthText.text = "HEALTH:\n" + health.ToString();
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {

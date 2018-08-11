@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Animations;
 
 public enum Direction {
@@ -35,6 +36,9 @@ public class BoardController : MonoBehaviour {
 	public GameObject evilFishprefab;
 	public GameObject groundBlockPrefab;
 	public GameObject groundDiagonalPrefab;
+
+	public Text healthText;
+	public GameObject player;
 
 
 	// Use this for initialization
@@ -148,7 +152,7 @@ public class BoardController : MonoBehaviour {
 	public void InitPrefabDictionary() {
 		prefabDictionary = new Dictionary<TileEnum, GameObject> ();
 
-		// prefabDictionary[TileEnum.Player] = playerPrefab;
+		prefabDictionary[TileEnum.Player] = playerPrefab;
 		prefabDictionary[TileEnum.EvilFish] = evilFishprefab;
 		prefabDictionary[TileEnum.Ground] = groundPrefab;
 		prefabDictionary[TileEnum.GroundBlock] = groundBlockPrefab;
@@ -261,11 +265,16 @@ public class BoardController : MonoBehaviour {
 							SetAnimationFrame(obj);
 						}
 
-					} else if (board[x][y] == TileEnum.Player) {
-						GameObject player = GameObject.Find("Player");
-						player.transform.position = new Vector3(x,y,0);
-						Debug.Log("Player at " + x.ToString() + " , " + y.ToString());
-					}
+						if (obj.transform.tag == "Player") {
+							player = obj;
+						}
+
+					} 
+					// else if (board[x][y] == TileEnum.Player) {
+					// 	GameObject player = GameObject.Find("Player");
+					// 	player.transform.position = new Vector3(x,y,0);
+					// 	Debug.Log("Player at " + x.ToString() + " , " + y.ToString());
+					// }
 
 				}
 			}

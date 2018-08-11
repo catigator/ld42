@@ -31,8 +31,6 @@ public class MenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameTime.isPaused = true;
-		pc = player.GetComponent<PlayerController>();
-
 		titleScreen.SetActive(true);
 	}
 	

@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject player;
 	public Rigidbody2D rb;
+	public BoardController bc;
 
 	public Vector2 vectorToPlayer;
 
@@ -13,14 +14,14 @@ public class EnemyController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Player");
+		bc = GameObject.Find("BoardController").GetComponent<BoardController>();
 		rb = this.GetComponent<Rigidbody2D>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		vectorToPlayer = player.transform.position - this.transform.position;
+		vectorToPlayer = bc.player.transform.position - this.transform.position;
   		transform.rotation = Quaternion.FromToRotation(Vector3.left, vectorToPlayer);
 
 		rb.velocity = vectorToPlayer.normalized*speed;
