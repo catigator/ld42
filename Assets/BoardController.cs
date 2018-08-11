@@ -39,6 +39,7 @@ public class BoardController : MonoBehaviour {
 
 	public Text healthText;
 	public GameObject player;
+	public GameObject tilesObject;
 
 
 	// Use this for initialization
@@ -285,7 +286,7 @@ public class BoardController : MonoBehaviour {
 		GameObject obj = (GameObject)Instantiate (prefab);
 		Vector3 position = new Vector3(x, y, 0);
 		obj.transform.position = position;
-		obj.transform.parent = this.transform;
+		obj.transform.parent = tilesObject.transform;
 		return obj;
 	}
 

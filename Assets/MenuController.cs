@@ -41,17 +41,24 @@ public class MenuController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R)) {
-				// ReturnToGame();
+				ReturnToGame();
 		}
 
 	}
 
 	public void ReturnToGame() {
+		KillAllTiles();
 		GameTime.isPaused = false;
 			
 		startScreen.SetActive(false);
 		bc.BeginLevel();
 
+	}
+
+	public void KillAllTiles() {
+		foreach (Transform child in bc.tilesObject.transform) {
+			GameObject.Destroy(child.gameObject);
+		}
 	}
 
 

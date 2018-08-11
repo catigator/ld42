@@ -30,6 +30,7 @@ public class PlayerShooter : MonoBehaviour {
 				// TODO: need to make this rotation dependant...
 				// newPosition.y -= 0.4f;
 				newBullet.transform.position = newPosition;
+				newBullet.transform.parent = this.transform.parent;
 
 	            Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
 	            rb.velocity = transform.right*velocity;

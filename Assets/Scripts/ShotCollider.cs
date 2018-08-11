@@ -26,6 +26,7 @@ public class ShotCollider : MonoBehaviour {
 			}
 			GameObject newExplosion = Instantiate(
 					explosion, col.transform.position, transform.rotation) as GameObject;
+			newExplosion.transform.parent = this.transform.parent;
 			Destroy(this.gameObject);
 		}
 	}
