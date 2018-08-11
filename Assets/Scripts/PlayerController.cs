@@ -72,17 +72,21 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		am.playerHit.Play();
-		health -= 1;
-		SetHealthText();
-		Debug.Log("COLLIDED WITH " + col.transform.name);
+		if (col.transform.tag != this.transform.tag) {
+			am.playerHit.Play();
+			health -= 1;
+			SetHealthText();
+			Debug.Log("COLLIDED WITH " + col.transform.name);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		am.playerHit.Play();
-		health -= 1;
-		SetHealthText();
-		Debug.Log("TRIGGERED WITH " + col.transform.name);
+		if (col.transform.tag != this.transform.tag) {
+			am.playerHit.Play();
+			health -= 1;
+			SetHealthText();
+			Debug.Log("TRIGGERED WITH " + col.transform.name);
+		}
 	}
 
 }

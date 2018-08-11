@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour {
 
 	public AudioSource pinkNoise;
 	public AudioSource playerHit;
+	public AudioSource playerShoot;
+	public AudioSource explosion;
 
 	// Use this for initialization
 	void Start () {
