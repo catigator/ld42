@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,9 +12,17 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 moveDirection;
 	public float currentSpeed;
 
+	public AudioManager am;
+	public int maxHealth;
+	public int health;
+
+	public Text healthText;
+
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D>();
+		health = maxHealth;
+		SetHealthText();
 	}
 	
 	// Update is called once per frame
@@ -45,6 +54,17 @@ public class PlayerController : MonoBehaviour {
 			} 
 		}
 		
+	}
+
+	void SetHealthText() {
+		healthText.text = "HEALTH: " + health.ToString();
+	}
+
+	void OnCollisionEnter2D(Collision2D col) {
+		am.playerHit.Play();
+		health -= 1;
+		SetHealthText();
+		Debug.Log("COLLIDED WITH " + col.transform.name);
 	}
 
 }
