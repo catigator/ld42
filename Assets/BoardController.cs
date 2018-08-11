@@ -22,6 +22,7 @@ public class BoardController : MonoBehaviour {
 	public int gameSizeY;
 
 	public TileEnum[][] gameBoard;
+	public TileEnum[][] objectBoard;
 
 	public GameObject playerPrefab;
 	public GameObject groundPrefab;
@@ -40,6 +41,12 @@ public class BoardController : MonoBehaviour {
 		gameBoard = InitGameBoard(gameBoard);
 		LoadLevel("Map1_Ground", gameBoard);
 		MakeTiles(gameBoard);
+
+		objectBoard = InitGameBoard(objectBoard);
+		LoadLevel("Map1_Algae", objectBoard);
+		LoadLevel("Map1_Enemies", objectBoard);
+		LoadLevel("Map1_Objects", objectBoard);
+		MakeTiles(objectBoard);
 	}
 	
 	// Update is called once per frame
@@ -161,9 +168,12 @@ public class BoardController : MonoBehaviour {
 						
 						var tileEnum = tileDictionary [tileInt];
 
-						int x = i_col;
-						board[x][y] = tileEnum;
-						Debug.Log(x.ToString() + ", " + y.ToString() + ": " + tileEnum.ToString());
+						if (tileEnum != TileEnum.None) {
+
+							int x = i_col;
+							board[x][y] = tileEnum;
+
+						}
 					}
 				}
 
@@ -173,7 +183,6 @@ public class BoardController : MonoBehaviour {
 	}
 
 	void MakeTiles(TileEnum[][] board) {
-		Debug.Log("MakeTiles");
 		for (int x = 0; x < gameSizeX; x++) {
 
 			for (int y = 0; y < gameSizeY; y++) {
@@ -186,6 +195,10 @@ public class BoardController : MonoBehaviour {
 						GameObject obj = MakeTile(x, y, prefab);
 						// Transform tile = obj.transform.GetChild(0);
 						// SetFloorRotation(x, y, tile, board);
+					} else if (board[x][y] == TileEnum.Player) {
+						GameObject player = GameObject.Find("Player");
+						player.transform.position = new Vector3(x,y,0);
+						Debug.Log("Player at " + x.ToString() + " , " + y.ToString());
 					}
 
 				}
@@ -194,7 +207,6 @@ public class BoardController : MonoBehaviour {
 	}
 
 	GameObject MakeTile(float x, float y, GameObject prefab) {
-		Debug.Log("MakeTile: " + prefab.transform.name);
 		GameObject obj = (GameObject)Instantiate (prefab);
 		Vector3 position = new Vector3(x, y, 0);
 		obj.transform.position = position;
