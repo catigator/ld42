@@ -1,0 +1,14 @@
+/Assembly*
+/Assets/Standard*
+/Assets/PostProcessing/Resources*
+/Assets/PostProcessing/Editor*
+/Assets/PostProcessing/Runtime*
+/Assets/PostProcessing/Textures*
+/Assets/PostProcessing/Utilities*
+/Library/*
+/Temp/*
+*DS_Store*
+*.meta
+*.swp
+*.cache
+/Builds/*
