@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		vectorToPlayer = player.transform.position - this.transform.position;
+  		transform.rotation = Quaternion.FromToRotation(Vector3.left, vectorToPlayer);
 
 		rb.velocity = vectorToPlayer.normalized*speed;
 	}
