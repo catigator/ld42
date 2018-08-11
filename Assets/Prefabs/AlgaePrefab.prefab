@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212222231551902578}
   - component: {fileID: 95978506368733442}
   - component: {fileID: 61036951725511746}
+  - component: {fileID: 114105722501656140}
   m_Layer: 8
   m_Name: AlgaePrefab
   m_TagString: Algae
@@ -84,6 +85,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114105722501656140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358865505608668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5005272707c447a19fe9f9c61f693f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEnum: 0
 --- !u!212 &212222231551902578
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212010356902479726}
   - component: {fileID: 95287590754047002}
   - component: {fileID: 68496677154970594}
+  - component: {fileID: 114102591751310088}
   m_Layer: 11
   m_Name: GroundDiagonalPrefab
   m_TagString: Ground
@@ -76,6 +77,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114102591751310088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076033613987050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5005272707c447a19fe9f9c61f693f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEnum: 0
 --- !u!212 &212010356902479726
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -23,9 +23,9 @@ public class ShotCollider : MonoBehaviour {
 			Debug.Log("TORPEDO TRIGGERED WITH " + col.transform.name);
 			if (col.transform.tag != "Ground") {
 				Destroy(col.transform.gameObject);
-				GameObject newExplosion = Instantiate(
-					explosion, col.transform.position, transform.rotation) as GameObject;
 			}
+			GameObject newExplosion = Instantiate(
+					explosion, col.transform.position, transform.rotation) as GameObject;
 			Destroy(this.gameObject);
 		}
 	}

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212588716686445482}
   - component: {fileID: 95431918889142448}
   - component: {fileID: 114326082167934156}
+  - component: {fileID: 114853046361339452}
   m_Layer: 0
   m_Name: ExplosionPrefab
   m_TagString: Untagged
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elapsedTime: 0
   destroyAfterTime: 0.3
+--- !u!114 &114853046361339452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089834842388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5005272707c447a19fe9f9c61f693f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEnum: 0
 --- !u!212 &212588716686445482
 SpriteRenderer:
   m_ObjectHideFlags: 1

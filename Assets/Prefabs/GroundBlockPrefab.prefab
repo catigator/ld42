@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212260389019623240}
   - component: {fileID: 95854639485378574}
   - component: {fileID: 61456347461910178}
+  - component: {fileID: 114596330004682378}
   m_Layer: 11
   m_Name: GroundBlockPrefab
   m_TagString: Ground
@@ -84,6 +85,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114596330004682378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577913765050154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5005272707c447a19fe9f9c61f693f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEnum: 0
 --- !u!212 &212260389019623240
 SpriteRenderer:
   m_ObjectHideFlags: 1
