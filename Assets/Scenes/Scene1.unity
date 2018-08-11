@@ -146,7 +146,7 @@ RectTransform:
   - {fileID: 1433179972}
   - {fileID: 1811564524}
   m_Father: {fileID: 378614994}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -462,8 +462,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 94796935}
-  - {fileID: 1564236086}
   - {fileID: 74105106}
+  - {fileID: 584001052}
   m_Father: {fileID: 1098398319}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -807,6 +807,40 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 583427699}
+--- !u!1 &584001051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 584001052}
+  m_Layer: 0
+  m_Name: Gamescreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &584001052
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 584001051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1564236086}
+  m_Father: {fileID: 378614994}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &819245855
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,16 +951,11 @@ MonoBehaviour:
   player: {fileID: 0}
   bc: {fileID: 1714783898}
   pc: {fileID: 0}
-  pauseScreen: {fileID: 0}
-  pauseAudio: {fileID: 0}
-  imageScreen: {fileID: 0}
   startScreen: {fileID: 74105105}
   titleScreen: {fileID: 74105105}
   gameOverScreen: {fileID: 0}
   endScreen: {fileID: 0}
-  singleImageScreen: {fileID: 0}
-  imagesObject: {fileID: 0}
-  actionText: {fileID: 0}
+  gameScreen: {fileID: 584001051}
   am: {fileID: 0}
   imagePrefab: {fileID: 0}
   images: []
@@ -1360,16 +1389,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1564236085}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 378614994}
-  m_RootOrder: 1
+  m_Father: {fileID: 584001052}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 205, y: 808}
+  m_AnchoredPosition: {x: -597.8571, y: 378}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564236087

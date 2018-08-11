@@ -96,6 +96,13 @@ public class StartScreenController : MonoBehaviour {
 		} 
 	}
 
+	public void ResetText() {
+		startText.text = "";
+		continueText.GetComponent<Text>().text = "";
+		currentChar = 0;
+		elapsedTime = 0f;
+	}
+
 	public void SpaceStart() {
 		mc.ReturnToGame();
 	}

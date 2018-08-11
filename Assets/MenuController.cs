@@ -9,16 +9,13 @@ public class MenuController : MonoBehaviour {
 	public GameObject player;
 	public BoardController bc;
 	public PlayerController pc;
-	public GameObject pauseScreen;
-	public AudioSource pauseAudio;
-	public GameObject imageScreen;
 	public GameObject startScreen;
 	public GameObject titleScreen;
 	public GameObject gameOverScreen;
 	public GameObject endScreen;
-	public GameObject singleImageScreen;
-	public GameObject imagesObject;
-	public Text actionText;
+	public GameObject gameScreen;
+
+
 	public AudioManager am;
 // 
 	public GameObject imagePrefab;
@@ -44,6 +41,10 @@ public class MenuController : MonoBehaviour {
 				ReturnToGame();
 		}
 
+		if (Input.GetKeyDown(KeyCode.T)) {
+				GoToStartScreen();
+		}
+
 	}
 
 	public void ReturnToGame() {
@@ -51,7 +52,17 @@ public class MenuController : MonoBehaviour {
 		GameTime.isPaused = false;
 			
 		startScreen.SetActive(false);
+		gameScreen.SetActive(true);
 		bc.BeginLevel();
+
+	}
+
+	public void GoToStartScreen() {
+		KillAllTiles();
+		GameTime.isPaused = true;
+		gameScreen.SetActive(false);
+		startScreen.GetComponent<StartScreenController>().ResetText();
+		startScreen.SetActive(true);
 
 	}
 
