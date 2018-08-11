@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	public int health;
 
 	public Text healthText;
+	public SpriteRenderer subFlame;
 
 	// Use this for initialization
 	void Start () {
@@ -33,12 +34,22 @@ public class PlayerController : MonoBehaviour {
 
 		int verticalInput = (int) Mathf.Sign(Input.GetAxis("Vertical"));
 
+		bool anyFlameInput = false;
+
 		if (Input.GetKey(KeyCode.UpArrow)) {
 			verticalInput = 1;
+			anyFlameInput = true;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
 			verticalInput = -1;
+			anyFlameInput = true;
 		} else {
 			verticalInput = 0;
+		}
+
+		if (anyFlameInput) {
+			subFlame.enabled = true;
+		} else {
+			subFlame.enabled = false;
 		}
 
 		currentSpeed = rb.velocity.magnitude;
