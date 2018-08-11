@@ -499,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &486130659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,8 +809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   turnSpeed: 75
-  speed: 5
-  maxSpeed: 2.5
+  speed: 4
+  maxSpeed: 3
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   am: {fileID: 1062525217}
