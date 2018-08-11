@@ -49,11 +49,14 @@ public class BoardController : MonoBehaviour {
 
 
 		gameBoard = InitGameBoard(gameBoard);
+		objectBoard = InitGameBoard(objectBoard);
+
+		
+	}
+
+	public void BeginLevel() {
 		LoadLevel("Map1_Ground", gameBoard);
 		MakeTiles(gameBoard);
-
-		objectBoard = InitGameBoard(objectBoard);
-		
 		LoadLevel("Map1_Algae", objectBoard);
 		LoadLevel("Map1_Enemies", objectBoard);
 		LoadLevel("Map1_Objects", objectBoard);
