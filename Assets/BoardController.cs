@@ -16,13 +16,17 @@ public class BoardController : MonoBehaviour {
 
 	public Dictionary<int, TileEnum> tileDictionary;
 	public Dictionary<TileEnum, GameObject> prefabDictionary;
-	public Dictionary<int, Direction> directionDictionary; 
+	public Dictionary<int, Direction> directionDictionary;
+	public Dictionary<Direction, float> degreesDict; 
 
 	public int gameSizeX;
 	public int gameSizeY;
 
 	public TileEnum[][] gameBoard;
 	public TileEnum[][] objectBoard;
+	public Direction[][] directionBoard;
+	public Direction[][] directionGroundBoard;
+	
 
 	public GameObject playerPrefab;
 	public GameObject groundPrefab;
@@ -36,13 +40,19 @@ public class BoardController : MonoBehaviour {
 	void Start () {
 		InitTileDictionary();
 		InitDirectionDictionary();
+		InitDegreesDict();
 		InitPrefabDictionary();
+
+		directionBoard = InitDirectionBoard(directionBoard);
+		directionGroundBoard = InitDirectionBoard(directionGroundBoard);
+
 
 		gameBoard = InitGameBoard(gameBoard);
 		LoadLevel("Map1_Ground", gameBoard);
 		MakeTiles(gameBoard);
 
 		objectBoard = InitGameBoard(objectBoard);
+		
 		LoadLevel("Map1_Algae", objectBoard);
 		LoadLevel("Map1_Enemies", objectBoard);
 		LoadLevel("Map1_Objects", objectBoard);
@@ -67,6 +77,25 @@ public class BoardController : MonoBehaviour {
 			for (int y = 0; y < gameSizeY; y++)
 			{
 				board [x][y] = TileEnum.None;
+			}
+		}
+
+		return board;
+	}
+
+	Direction[][] InitDirectionBoard(Direction[][] board) {
+		gameSizeX = 50;
+		gameSizeY = 50;
+
+		board = new Direction[gameSizeX][];
+
+		for (int x = 0; x < gameSizeX; x++) {
+
+			board [x] = new Direction[gameSizeY];
+
+			for (int y = 0; y < gameSizeY; y++)
+			{
+				board [x][y] = Direction.None;
 			}
 		}
 
@@ -100,6 +129,18 @@ public class BoardController : MonoBehaviour {
 
 	}
 
+	public void InitDegreesDict() {
+		degreesDict = new Dictionary<Direction, float> ();
+
+		degreesDict[Direction.Down] = 0f;
+		degreesDict[Direction.Left] = 270f;
+		degreesDict[Direction.Up] = 180f;
+		degreesDict[Direction.Right] = 90f;
+
+		degreesDict[Direction.None] = 0f;
+
+	}
+
 	public void InitPrefabDictionary() {
 		prefabDictionary = new Dictionary<TileEnum, GameObject> ();
 
@@ -114,6 +155,8 @@ public class BoardController : MonoBehaviour {
 
 	public void InitDirectionDictionary() {
 		directionDictionary = new Dictionary<int, Direction> ();
+
+		directionDictionary [-1] = Direction.None;
 
 		directionDictionary [0] = Direction.Down;
 		directionDictionary [1] = Direction.Left;
@@ -173,6 +216,14 @@ public class BoardController : MonoBehaviour {
 							int x = i_col;
 							board[x][y] = tileEnum;
 
+							if (tileEnum == TileEnum.Ground) {
+								var direction = directionDictionary[tileInt];
+								directionGroundBoard[x][y] = direction;
+							} else {
+								var direction = directionDictionary[tileInt];
+								directionBoard[x][y] = direction;
+							}
+
 						}
 					}
 				}
@@ -193,8 +244,14 @@ public class BoardController : MonoBehaviour {
 						GameObject prefab = prefabDictionary[board[x][y]];
 
 						GameObject obj = MakeTile(x, y, prefab);
-						// Transform tile = obj.transform.GetChild(0);
-						// SetFloorRotation(x, y, tile, board);
+
+						if (board[x][y] == TileEnum.Ground) {
+							float rotation = degreesDict[directionGroundBoard[x][y]];
+							obj.transform.eulerAngles = new Vector3(0,0, rotation);
+						} else {
+							float rotation = degreesDict[directionBoard[x][y]];
+							obj.transform.eulerAngles = new Vector3(0,0, rotation);
+						}
 					} else if (board[x][y] == TileEnum.Player) {
 						GameObject player = GameObject.Find("Player");
 						player.transform.position = new Vector3(x,y,0);
