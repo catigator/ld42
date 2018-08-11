@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public enum Direction {
 
@@ -252,6 +253,11 @@ public class BoardController : MonoBehaviour {
 							float rotation = degreesDict[directionBoard[x][y]];
 							obj.transform.eulerAngles = new Vector3(0,0, rotation);
 						}
+
+						if (obj.transform.tag == "Ground") {
+							SetAnimationFrame(obj);
+						}
+
 					} else if (board[x][y] == TileEnum.Player) {
 						GameObject player = GameObject.Find("Player");
 						player.transform.position = new Vector3(x,y,0);
@@ -270,6 +276,26 @@ public class BoardController : MonoBehaviour {
 		obj.transform.parent = this.transform;
 		return obj;
 	}
+
+	void SetAnimationFrame(GameObject obj) {
+		var anim = obj.GetComponent<Animator>();
+		int frame = Random.Range(0,4);
+		string currAnimName = GetCurrentAnimationName(anim);
+        anim.Play(currAnimName, 0, ( 1f / 4f ) * frame);
+		anim.speed = 0f;
+
+	}
+
+	string GetCurrentAnimationName(Animator anim)
+     {
+        var currAnimName = "";
+        var clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+		AnimatorClipInfo aci = clipInfo[0]; // I haven't seen clipInfo be larger than one before
+
+		currAnimName = aci.clip.name;
+        return currAnimName;
+ 
+     }
 
 		
 }
