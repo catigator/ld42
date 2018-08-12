@@ -21,9 +21,6 @@ public class BoardController : MonoBehaviour {
 	public Dictionary<int, Direction> directionDictionary;
 	public Dictionary<Direction, float> degreesDict;
 
-	public Dictionary<Direction, Direction> oppositeDirectionDict; 
-	public Dictionary<Direction, Position> directionPositionDict; 
-
 
 	public int gameSizeX;
 	public int gameSizeY;
@@ -51,17 +48,18 @@ public class BoardController : MonoBehaviour {
 	public int maxLevel;
 
 	public MenuController mc;
+	public Util util;
 
 	// Use this for initialization
 	void Start () {
+		util = this.GetComponent<Util>();
+		util.InitDicts();
 		mc = GameObject.Find("MenuController").GetComponent<MenuController>();
 		currentLevel = 0;
 		InitTileDictionary();
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
-		InitOppositeDirectionDict();
-		InitDirectionPositionDict();
 		maxLevel = 3;
 		
 	}
@@ -172,30 +170,6 @@ public class BoardController : MonoBehaviour {
 		degreesDict[Direction.Right] = 90f;
 
 		degreesDict[Direction.None] = 0f;
-
-	}
-
-	public void InitOppositeDirectionDict() {
-		oppositeDirectionDict = new Dictionary<Direction, Direction> ();
-
-		oppositeDirectionDict[Direction.Down] = Direction.Up;
-		oppositeDirectionDict[Direction.Left] = Direction.Right;
-		oppositeDirectionDict[Direction.Up] = Direction.Down;
-		oppositeDirectionDict[Direction.Right] = Direction.Left;
-
-		oppositeDirectionDict[Direction.None] = Direction.None;
-
-	}
-
-	public void InitDirectionPositionDict() {
-		directionPositionDict = new Dictionary<Direction, Position> ();
-
-		directionPositionDict[Direction.Down] = new Position(0, -1);
-		directionPositionDict[Direction.Left] = new Position(-1, 0);
-		directionPositionDict[Direction.Up] = new Position(0, 1);
-		directionPositionDict[Direction.Right] = new Position(1, 0);
-
-		directionPositionDict[Direction.None] = new Position(0, 0);
 
 	}
 
@@ -330,7 +304,7 @@ public class BoardController : MonoBehaviour {
 						}
 
 						if (board[x][y] == TileEnum.Algae) {
-							Direction oppositeDir = oppositeDirectionDict[directionBoard[x][y]];
+							Direction oppositeDir = util.oppositeDirectionDict[directionBoard[x][y]];
 							HandleAlgaeTile(obj, x, y, oppositeDir);
 						}
 
