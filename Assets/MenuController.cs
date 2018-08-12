@@ -39,15 +39,19 @@ public class MenuController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R)) {
-				ReturnToGame();
+			ReturnToGame();
 		}
 
 		if (Input.GetKeyDown(KeyCode.T)) {
-				GoToStartScreen();
+			GoToStartScreen();
 		}
 
 		if (Input.GetKeyDown(KeyCode.Y)) {
-				GoToBetweenLevelsScreen();
+			GoToBetweenLevelsScreen();
+		}
+
+		if (Input.GetKeyDown(KeyCode.U)) {
+			GoToEndScreen();
 		}
 
 	}
@@ -58,6 +62,7 @@ public class MenuController : MonoBehaviour {
 			
 		startScreen.SetActive(false);
 		gameOverScreen.SetActive(false);
+		endScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		gameScreen.SetActive(true);
 		bc.BeginLevel(bc.currentLevel + 1);
@@ -68,6 +73,7 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		endScreen.SetActive(false);
 		gameOverScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		startScreen.GetComponent<StartScreenController>().ResetText();
@@ -78,6 +84,7 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		endScreen.SetActive(false);
 		gameOverScreen.SetActive(false);
 		betweenLevelsScreen.GetComponent<StartScreenController>().ResetText();
 		startScreen.SetActive(false);
@@ -88,11 +95,23 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		endScreen.SetActive(false);
 		gameOverScreen.GetComponent<StartScreenController>().ResetText();
 		startScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		gameOverScreen.SetActive(true);
 
+	}
+
+	public void GoToEndScreen() {
+		KillAllTiles();
+		GameTime.isPaused = true;
+		gameScreen.SetActive(false);
+		endScreen.GetComponent<StartScreenController>().ResetText();
+		startScreen.SetActive(false);
+		betweenLevelsScreen.SetActive(false);
+		gameOverScreen.SetActive(false);
+		endScreen.SetActive(true);
 	}
 
 	public void KillAllTiles() {

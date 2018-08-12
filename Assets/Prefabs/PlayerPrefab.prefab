@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elapsedTime: 0
-  bulletInterval: 0.5
+  bulletInterval: 0.75
   bullet: {fileID: 1407787326675566, guid: 45f7b38f438bb482d8c8408e168be9b2, type: 2}
   velocity: 10
   am: {fileID: 0}

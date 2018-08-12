@@ -29,7 +29,7 @@ public class AlgaeController : MonoBehaviour {
 		elapsedTime += Time.deltaTime;
 		elapsedTimeForChecking += Time.deltaTime;
 
-		if (elapsedTime > 8f) {
+		if (elapsedTime > 6f) {
 			if (isFlashing) {
 				if (IsAlgaeFree()) {
 					GrowAlgae();

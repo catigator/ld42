@@ -76,10 +76,11 @@ public class StartScreenController : MonoBehaviour {
 	}
 
 	public void HandleSpace() {
-		Debug.Log("HabdleSpace");
+		Debug.Log("HandleSpace");
 		if (screenEnum == ScreenEnum.Start) {
 			SpaceStart();
 		} else if (screenEnum == ScreenEnum.End) {
+			mc.bc.currentLevel = 0;
 			mc.ReturnToGame();
 		} else if (screenEnum == ScreenEnum.GameOver) {
 			mc.bc.currentLevel -= 1;
