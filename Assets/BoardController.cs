@@ -56,6 +56,10 @@ public class BoardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		gameSizeX = 100;
+		gameSizeY = 100;
+
 		util = this.GetComponent<Util>();
 		util.InitDicts();
 		mc = GameObject.Find("MenuController").GetComponent<MenuController>();
@@ -115,9 +119,10 @@ public class BoardController : MonoBehaviour {
 		}
 
 		levels[1].texts.Add("MOVE WITH\nDIRECTION KEYS\nOR WASD");
-		levels[1].texts.Add("THRUST WITH UP/DOWN OR W/S");
-		levels[1].texts.Add("ROTATE WITH LEFT/RIGHT OR A/D");
-		levels[1].texts.Add("SHOOT WITH SPACE");
+		levels[1].texts.Add("THRUST WITH\nUP/DOWN OR W/S");
+		levels[1].texts.Add("ROTATE WITH\nLEFT/RIGHT OR A/D");
+		levels[1].texts.Add("SHOOT WITH\n SPACE");
+		levels[1].texts.Add("ENTER PORTAL TO\nWARP!!\nTO NEXT ZONE");
 	}
 
 	void HandleTextIntBoard() {
@@ -143,8 +148,7 @@ public class BoardController : MonoBehaviour {
 	}
 
 	int[][] InitTextIntBoard(int[][] board) {
-		gameSizeX = 50;
-		gameSizeY = 50;
+
 		board = new int[gameSizeX][];
 
 		for (int x = 0; x < gameSizeX; x++) {
@@ -162,8 +166,6 @@ public class BoardController : MonoBehaviour {
 	}
 
 	TileEnum[][] InitGameBoard(TileEnum[][] board) {
-		gameSizeX = 50;
-		gameSizeY = 50;
 
 		board = new TileEnum[gameSizeX][];
 
@@ -181,8 +183,6 @@ public class BoardController : MonoBehaviour {
 	}
 
 	Direction[][] InitDirectionBoard(Direction[][] board) {
-		gameSizeX = 50;
-		gameSizeY = 50;
 
 		board = new Direction[gameSizeX][];
 

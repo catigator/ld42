@@ -44,10 +44,10 @@ public class PlayerController : MonoBehaviour {
 
 		bool anyFlameInput = false;
 
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
 			verticalInput = 1;
 			anyFlameInput = true;
-		} else if (Input.GetKey(KeyCode.DownArrow)) {
+		} else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
 			verticalInput = -1;
 			anyFlameInput = true;
 		} else {
