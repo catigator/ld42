@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 95166453349438180}
   - component: {fileID: 61818675859632206}
   - component: {fileID: 114103150054390282}
-  m_Layer: 0
+  - component: {fileID: 114566559820730848}
+  m_Layer: 9
   m_Name: GreenKillaPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileEnum: 0
+--- !u!114 &114566559820730848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572380210463194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa73e60e8a9354798ab84382ff86f727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bc: {fileID: 0}
+  vectorToPlayer: {x: 0, y: 0}
+  elapsedTime: 0
+  shotSpeed: 5
+  bulletInterval: 4
+  bullet: {fileID: 1239451022635566, guid: f8f76ef496c2d4d779757060919c4fd8, type: 2}
 --- !u!212 &212419274292687596
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -2,33 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooter : MonoBehaviour {
+public class GreenKillaController : MonoBehaviour {
 
+	public BoardController bc;
+
+	public Vector2 vectorToPlayer;
 	public float elapsedTime;
+	
+
+	public float shotSpeed;
 	public float bulletInterval;
+
 	public GameObject bullet;
-	public float velocity = 20f;
-	public AudioManager am;
 
 	// Use this for initialization
 	void Start () {
-		am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+		bc = GameObject.Find("BoardController").GetComponent<BoardController>();
+		elapsedTime = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		elapsedTime += Time.deltaTime;
+		vectorToPlayer = bc.player.transform.position - this.transform.position;
+		vectorToPlayer = vectorToPlayer.normalized;
+
+		elapsedTime += Time.deltaTime;
 	    if (elapsedTime > bulletInterval)
 	    {
-	        if (Input.GetKey(KeyCode.Space))
-	        {
-				Shoot();
-	        }
+			Shoot();
 	    }
 	}
 
 	void Shoot() {
-		am.playerShoot.Play();
+		// playerShoot.Play();
 		GameObject newBullet = Instantiate(
 			bullet, transform.position, transform.rotation) as GameObject;
 
@@ -39,7 +46,7 @@ public class PlayerShooter : MonoBehaviour {
 		newBullet.transform.parent = this.transform.parent;
 
 		Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
-		rb.velocity = transform.right*velocity;
+		rb.velocity = vectorToPlayer*shotSpeed;
 		elapsedTime = 0f;
 
 	}

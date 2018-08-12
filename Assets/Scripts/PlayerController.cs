@@ -89,16 +89,17 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.layer != this.gameObject.layer) {
-			am.playerHit.Play();
-			health -= 1;
-			SetHealthText();
-			Debug.Log("COLLIDED WITH " + col.transform.name);
-
+			ChangeHealth(-1);
 			HandleReflection(col);
+		}
+	}
 
-			if (health <= 0) {
-				bc.mc.GoToGameOverScreen();
-			}
+	public void ChangeHealth(int change) {
+		am.playerHit.Play();
+		health -= 1;
+		SetHealthText();
+		if (health <= 0) {
+			bc.mc.GoToGameOverScreen();
 		}
 	}
 
