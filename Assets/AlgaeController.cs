@@ -28,6 +28,12 @@ public class AlgaeController : MonoBehaviour {
 			if (isFlashing) {
 				GrowAlgae();
 				isFlashing = false;
+				Animator animator = GetComponent<Animator> ();
+    			animator.Play ("Algae");
+				elapsedTime = 0f;
+			} else {
+				HandleGrowing();
+				elapsedTime = 0f;
 			}
 		}
 		
@@ -43,7 +49,7 @@ public class AlgaeController : MonoBehaviour {
 		Direction oppositeDir = bc.util.oppositeDirectionDict[direction];
 		float rotation = bc.degreesDict[oppositeDir];
 		obj.transform.eulerAngles = new Vector3(0,0, rotation);
-		elapsedTime = 0f;
+		bc.objectBoard[newPos.x][newPos.y] = TileEnum.Algae;
 	}
 
 	void HandleGrowing() {
