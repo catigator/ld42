@@ -117,12 +117,14 @@ public class PlayerController : MonoBehaviour {
 
 	void HandleReflection(Collision2D col) {
 		Vector2 inDirection = rb.velocity;
-		Vector2 inNormal = col.contacts[0].normal;
-		reflVelocity = Vector2.Reflect(transform.right, inNormal);
+		if (col.contacts.Length > 0) {
+			Vector2 inNormal = col.contacts[0].normal;
+			reflVelocity = Vector2.Reflect(transform.right, inNormal);
 
-		Vector2 newVelocity = reflVelocity*3f; // + collisionSpeed*rb.velocity;
-		rb.velocity = newVelocity;
-		MakeExplosion(col.contacts[0].point, transform.rotation, this.transform.parent);
+			Vector2 newVelocity = reflVelocity*3f; // + collisionSpeed*rb.velocity;
+			rb.velocity = newVelocity;
+			MakeExplosion(col.contacts[0].point, transform.rotation, this.transform.parent);
+		}
 	}
 
 	public void MakeExplosion(Vector3 pos, Quaternion rot, Transform parent) {

@@ -182,7 +182,7 @@ MonoBehaviour:
   cf: {fileID: 0}
   bc: {fileID: 0}
   collisionSpeed: 0.5
-  explosion: {fileID: 1089834842388178, guid: 3fd685c1d7d0543828b163548086d494, type: 2}
+  explosion: {fileID: 1323830831967034, guid: 391eeb5f767814480980f41b700e4a6d, type: 2}
 --- !u!114 &114365750529570266
 MonoBehaviour:
   m_ObjectHideFlags: 1
