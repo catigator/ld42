@@ -26,6 +26,8 @@ public class BoardController : MonoBehaviour {
 	public int gameSizeY;
 
 	public int currentLevel;
+	public Dictionary<int, Level> levels;
+	public List<Level> levelsList;
 
 	public TileEnum[][] gameBoard;
 	public TileEnum[][] objectBoard;
@@ -63,6 +65,8 @@ public class BoardController : MonoBehaviour {
 		InitDegreesDict();
 		InitPrefabDictionary();
 		maxLevel = 3;
+		InitLevels();
+
 		
 	}
 
@@ -101,6 +105,21 @@ public class BoardController : MonoBehaviour {
 		
 	}
 
+	void InitLevels() {
+		levels = new Dictionary<int, Level>();
+		levelsList = new List<Level>();
+		for (int i = 1; i <= maxLevel; i++)
+		{
+			levels[i] = new Level(i);
+			levelsList.Add(levels[i]);
+		}
+
+		levels[1].texts.Add("MOVE WITH\nDIRECTION KEYS\nOR WASD");
+		levels[1].texts.Add("THRUST WITH UP/DOWN OR W/S");
+		levels[1].texts.Add("ROTATE WITH LEFT/RIGHT OR A/D");
+		levels[1].texts.Add("SHOOT WITH SPACE");
+	}
+
 	void HandleTextIntBoard() {
 		for (int x = 0; x < textIntBoard.Length; x++)
 		{
@@ -112,7 +131,11 @@ public class BoardController : MonoBehaviour {
 					HelpText ht = obj.GetComponent<HelpText>();
 					int textInt = textIntBoard[x][y];
 					ht.textInt = textInt;
-					ht.helpText = "Woo I'm helping\n" + textInt.ToString();
+					Debug.Log("currentLeveL: " + currentLevel.ToString());
+					Debug.Log("level: " + levels[currentLevel].ToString());
+					Debug.Log("textInt: " + textInt.ToString());
+
+					ht.helpText = levels[currentLevel].texts[textInt];
 					ht.SetHelpText();
 				}
 			}

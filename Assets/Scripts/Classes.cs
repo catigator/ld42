@@ -56,3 +56,21 @@ public class Position {
 	}
 
 }
+
+[System.Serializable]
+public class Level {
+	public int number;
+	public bool clearedLevel;
+	public List<string> texts;
+
+	public Level(int nbr) {
+		number = nbr;
+		texts = new List<string>();
+
+	}
+
+	public override string ToString() {
+		return "Level " + number.ToString();
+	}
+
+}
