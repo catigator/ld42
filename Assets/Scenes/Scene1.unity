@@ -2963,7 +2963,7 @@ MonoBehaviour:
   levelText: {fileID: 1147098809}
   player: {fileID: 0}
   tilesObject: {fileID: 929088234}
-  maxLevel: 0
+  maxLevel: 5
   mc: {fileID: 0}
   util: {fileID: 0}
 --- !u!114 &1714783899

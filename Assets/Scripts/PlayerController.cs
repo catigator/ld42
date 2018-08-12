@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour {
 	// 	}
 	// }
 
-	void HandleReflection(Collision2D col) {
+	public void HandleReflection(Collision2D col) {
 		Vector2 inDirection = rb.velocity;
 		if (col.contacts.Length > 0) {
 			Vector2 inNormal = col.contacts[0].normal;
@@ -126,6 +126,12 @@ public class PlayerController : MonoBehaviour {
 			rb.velocity = newVelocity;
 			MakeExplosion(col.contacts[0].point, transform.rotation, this.transform.parent);
 		}
+	}
+
+	public void HandleOtherReflection(Rigidbody2D otherRb) {
+
+		rb.velocity += otherRb.velocity*1f;
+		
 	}
 
 	public void MakeExplosion(Vector3 pos, Quaternion rot, Transform parent) {

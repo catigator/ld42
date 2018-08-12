@@ -70,7 +70,6 @@ public class BoardController : MonoBehaviour {
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
-		maxLevel = 3;
 		InitLevels();
 
 		
@@ -129,6 +128,8 @@ public class BoardController : MonoBehaviour {
 		levels[2].texts.Add("RED ALGEA\nGROWS\n& GROWS\n& GROWS");
 
 		levels[3].texts.Add("FISH\nARE\nEVIL");
+
+		levels[4].texts.Add("BEWARE THE\nGREEN KILLAH");
 	}
 
 	void HandleTextIntBoard() {

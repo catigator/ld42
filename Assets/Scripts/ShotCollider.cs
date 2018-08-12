@@ -55,6 +55,7 @@ public class ShotCollider : MonoBehaviour {
 		if (col.transform.tag == "Player") {
 			PlayerController pc = col.gameObject.GetComponent<PlayerController>();
 			pc.ChangeHealth(-1);
+			pc.HandleOtherReflection(this.GetComponent<Rigidbody2D>());
 		}
 
 		am.explosion.Play();
