@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour {
 	public GameObject gameOverScreen;
 	public GameObject endScreen;
 	public GameObject gameScreen;
+	public GameObject betweenLevelsScreen;
 
 
 	public AudioManager am;
@@ -45,6 +46,10 @@ public class MenuController : MonoBehaviour {
 				GoToStartScreen();
 		}
 
+		if (Input.GetKeyDown(KeyCode.Y)) {
+				GoToBetweenLevelsScreen();
+		}
+
 	}
 
 	public void ReturnToGame() {
@@ -52,6 +57,7 @@ public class MenuController : MonoBehaviour {
 		GameTime.isPaused = false;
 			
 		startScreen.SetActive(false);
+		betweenLevelsScreen.SetActive(false);
 		gameScreen.SetActive(true);
 		bc.BeginLevel();
 
@@ -61,8 +67,19 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		betweenLevelsScreen.SetActive(false);
 		startScreen.GetComponent<StartScreenController>().ResetText();
 		startScreen.SetActive(true);
+	}
+
+	public void GoToBetweenLevelsScreen() {
+		KillAllTiles();
+		GameTime.isPaused = true;
+		gameScreen.SetActive(false);
+		betweenLevelsScreen.GetComponent<StartScreenController>().ResetText();
+		startScreen.SetActive(false);
+		betweenLevelsScreen.SetActive(true);
+
 
 	}
 

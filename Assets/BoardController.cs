@@ -24,6 +24,8 @@ public class BoardController : MonoBehaviour {
 	public int gameSizeX;
 	public int gameSizeY;
 
+	public int currentLevel;
+
 	public TileEnum[][] gameBoard;
 	public TileEnum[][] objectBoard;
 	public Direction[][] directionBoard;

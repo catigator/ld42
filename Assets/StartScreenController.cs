@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public enum ScreenEnum {
 	Start,
 	Title,
+	BetweenLevels,
 	End,
 	Menu,
 	GameOver
@@ -27,6 +28,7 @@ public class StartScreenController : MonoBehaviour {
 
 	public GameObject continueText;
 	public Text continueTextText;
+	public GameObject middleText;
 
 	public string newContinueText;
 	
@@ -34,7 +36,9 @@ public class StartScreenController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ogText = startText.text;
+		if (ogText == "") {
+			ogText = startText.text;
+		}
 		ogTypeSpeed = typeSpeed;
 		startText.text = "";
 		elapsedTime = 0f;
@@ -76,7 +80,13 @@ public class StartScreenController : MonoBehaviour {
 			mc.ReturnToGame();
 		} else if (screenEnum == ScreenEnum.GameOver) {
 			// SpaceGameOver();
+		}  else if (screenEnum == ScreenEnum.BetweenLevels) {
+			SpaceBetweenLevels();
 		}
+	}
+
+	public void SpaceBetweenLevels() {
+		mc.ReturnToGame();
 	}
 
 	public void HandleInput() {
@@ -97,10 +107,14 @@ public class StartScreenController : MonoBehaviour {
 	}
 
 	public void ResetText() {
+		if (ogText == "") {
+			ogText = startText.text;
+		}
 		startText.text = "";
 		continueText.GetComponent<Text>().text = "";
 		currentChar = 0;
 		elapsedTime = 0f;
+		middleText.SetActive(false);
 	}
 
 	public void SpaceStart() {
@@ -130,6 +144,7 @@ public class StartScreenController : MonoBehaviour {
 					blipAudio.Play();
 				}
 			} else {
+				middleText.SetActive(true);
 				if (!continueText.activeSelf) {
 					continueText.SetActive(true);
 				}
