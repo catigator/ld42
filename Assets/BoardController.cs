@@ -211,6 +211,12 @@ public class BoardController : MonoBehaviour {
 
 	}
 
+	public void HandleAlgaeTile(GameObject obj, int x, int y) {
+		AlgaeController ac = obj.GetComponent<AlgaeController>();
+		ac.position = new Position(x, y);
+
+	}
+
 	
 	public void LoadLevel(string level, TileEnum[][] board) {
 		Debug.Log(board);
@@ -292,6 +298,10 @@ public class BoardController : MonoBehaviour {
 							player = obj;
 						}
 
+						if (board[x][y] == TileEnum.Algae) {
+							HandleAlgaeTile(obj, x, y);
+						}
+
 					} 
 					// else if (board[x][y] == TileEnum.Player) {
 					// 	GameObject player = GameObject.Find("Player");
@@ -309,6 +319,7 @@ public class BoardController : MonoBehaviour {
 		Vector3 position = new Vector3(x, y, 0);
 		obj.transform.position = position;
 		obj.transform.parent = tilesObject.transform;
+		
 		return obj;
 	}
 
