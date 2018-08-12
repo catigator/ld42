@@ -47,11 +47,14 @@ public class BoardController : MonoBehaviour {
 	public GameObject textPrefab;
 	public GameObject greenKillaPrefab;
 
+	public AudioManager am;
+
 	public Text healthText;
 	public Text levelText;
 	public GameObject player;
 	public GameObject tilesObject;
 	public int maxLevel;
+	public int clearedLevel;
 
 	public MenuController mc;
 	public Util util;
@@ -65,6 +68,7 @@ public class BoardController : MonoBehaviour {
 		util = this.GetComponent<Util>();
 		util.InitDicts();
 		mc = GameObject.Find("MenuController").GetComponent<MenuController>();
+		am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		currentLevel = 0;
 		InitTileDictionary();
 		InitDirectionDictionary();
@@ -472,7 +476,7 @@ public class BoardController : MonoBehaviour {
      }
 
 	 void SetLevelText() {
-		levelText.text = "ZONE:\n" + currentLevel.ToString();
+		levelText.text = currentLevel.ToString();
 	}
 
 		

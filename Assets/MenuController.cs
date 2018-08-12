@@ -39,23 +39,42 @@ public class MenuController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R)) {
+			bc.currentLevel -= 1;
 			ReturnToGame();
 		}
 
-		if (Input.GetKeyDown(KeyCode.T)) {
-			GoToStartScreen();
-		}
+		// if (Input.GetKeyDown(KeyCode.T)) {
+		// 	GoToStartScreen();
+		// }
 
-		if (Input.GetKeyDown(KeyCode.Y)) {
-			GoToBetweenLevelsScreen();
-		}
+		// if (Input.GetKeyDown(KeyCode.Y)) {
+		// 	GoToBetweenLevelsScreen();
+		// }
 
-		if (Input.GetKeyDown(KeyCode.U)) {
-			GoToEndScreen();
-		}
+		// if (Input.GetKeyDown(KeyCode.U)) {
+		// 	GoToEndScreen();
+		// }
 
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.Quit();
+		}
+
+		if (Input.GetKeyDown(KeyCode.N)) {
+			if (bc.clearedLevel > bc.currentLevel
+			&& bc.currentLevel < bc.maxLevel) {
+				ReturnToGame();
+			} else {
+				bc.am.cant.Play();
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.P)) {
+			if (bc.currentLevel > 1) {
+				bc.currentLevel -= 2;
+				ReturnToGame();
+			} else {
+				bc.am.cant.Play();
+			}
 		}
 
 

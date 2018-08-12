@@ -20,6 +20,7 @@ public class GoalController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.transform.tag == "Player") {
 			if (bc.currentLevel != bc.maxLevel) {
+				bc.clearedLevel = bc.currentLevel;
 				bc.mc.GoToBetweenLevelsScreen();
 			} else {
 				bc.mc.GoToEndScreen();

@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void SetHealthText() {
-		bc.healthText.text = "HEALTH:\n" + health.ToString();
+		bc.healthText.text = health.ToString();
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {

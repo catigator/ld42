@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour {
 	public AudioSource playerHit;
 	public AudioSource playerShoot;
 	public AudioSource explosion;
+	public AudioSource cant;
 
 	// Use this for initialization
 	void Start () {
