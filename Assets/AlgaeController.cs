@@ -29,13 +29,12 @@ public class AlgaeController : MonoBehaviour {
 		elapsedTime += Time.deltaTime;
 		elapsedTimeForChecking += Time.deltaTime;
 
-		if (elapsedTime > 5f) {
+		if (elapsedTime > 8f) {
 			if (isFlashing) {
-				GrowAlgae();
-				isFlashing = false;
-				Animator animator = GetComponent<Animator> ();
-    			animator.Play ("Algae");
-				elapsedTime = 0f;
+				if (IsAlgaeFree()) {
+					GrowAlgae();
+				}
+				SetStill();
 			}
 		}
 
@@ -44,6 +43,13 @@ public class AlgaeController : MonoBehaviour {
 			elapsedTimeForChecking = 0f;
 		}
 		
+	}
+
+	void SetStill() {
+		isFlashing = false;
+		Animator animator = GetComponent<Animator> ();
+		animator.Play ("Algae");
+		elapsedTime = 0f;
 	}
 
 	void GrowAlgae() {
@@ -79,7 +85,7 @@ public class AlgaeController : MonoBehaviour {
 
 		// 1 - Check that next tile is free
 		if (!IsDirectionFree(position, direction)) {
-			return false;
+			canGrowForward = false;
 		}
 
 		// 2 - Check that that tile is completely free to grow
