@@ -320,7 +320,7 @@ public class BoardController : MonoBehaviour {
 		}
 	}
 
-	GameObject MakeTile(float x, float y, GameObject prefab) {
+	public GameObject MakeTile(float x, float y, GameObject prefab) {
 		GameObject obj = (GameObject)Instantiate (prefab);
 		Vector3 position = new Vector3(x, y, 0);
 		obj.transform.position = position;

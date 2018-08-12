@@ -23,7 +23,27 @@ public class AlgaeController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		elapsedTime += Time.deltaTime;
+
+		if (elapsedTime > 5f) {
+			if (isFlashing) {
+				GrowAlgae();
+				isFlashing = false;
+			}
+		}
 		
+	}
+
+	void GrowAlgae() {
+
+		Position newPos = new Position(position.x, position.y);
+		newPos.Add(bc.util.directionPositionDict[direction]);
+
+		GameObject obj = bc.MakeTile( newPos.x, newPos.y, bc.algaePrefab);
+		bc.HandleAlgaeTile(obj, newPos.x, newPos.y, direction);
+		Direction oppositeDir = bc.util.oppositeDirectionDict[direction];
+		float rotation = bc.degreesDict[oppositeDir];
+		obj.transform.eulerAngles = new Vector3(0,0, rotation);
+		elapsedTime = 0f;
 	}
 
 	void HandleGrowing() {
