@@ -75,8 +75,13 @@ public class BoardController : MonoBehaviour {
 		InitDegreesDict();
 		InitPrefabDictionary();
 		InitLevels();
+		clearedLevel = PlayerPrefs.GetInt("clearedLevel", 0);
+		currentLevel = clearedLevel;
+		if (currentLevel == maxLevel) {
+			currentLevel -= 1;
+		}
 
-		
+
 	}
 
 	public void BeginLevel(int level) {

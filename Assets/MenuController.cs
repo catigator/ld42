@@ -60,7 +60,7 @@ public class MenuController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.N)) {
-			if (bc.clearedLevel > bc.currentLevel
+			if (bc.clearedLevel >= bc.currentLevel
 			&& bc.currentLevel < bc.maxLevel) {
 				ReturnToGame();
 			} else {
