@@ -43,6 +43,7 @@ public class BoardController : MonoBehaviour {
 	public Text levelText;
 	public GameObject player;
 	public GameObject tilesObject;
+	public int maxLevel;
 
 
 	// Use this for initialization
@@ -52,6 +53,7 @@ public class BoardController : MonoBehaviour {
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
+		maxLevel = 2;
 		
 	}
 
@@ -66,7 +68,9 @@ public class BoardController : MonoBehaviour {
 		objectBoard = InitGameBoard(objectBoard);
 
 		string levelBase = level.ToString();
-		levelBase = "1";
+		if (level > maxLevel) {
+			levelBase = "1";
+		}
 
 		LoadLevel("Map" + levelBase +"_Ground", gameBoard);
 		MakeTiles(gameBoard);
