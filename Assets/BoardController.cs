@@ -126,6 +126,8 @@ public class BoardController : MonoBehaviour {
 		levels[1].texts.Add("ENTER PORTAL TO\nWARP!!\nTO NEXT ZONE");
 
 		levels[2].texts.Add("RED ALGEA\nGROWS\n& GROWS\n& GROWS");
+		
+		levels[3].texts.Add("FISH\nARE\nEVIL");
 	}
 
 	void HandleTextIntBoard() {
