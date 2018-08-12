@@ -11,7 +11,8 @@ public enum TileEnum {
 	GroundDiagonal,
 	Algae,
 	EvilFish,
-	Goal
+	Goal,
+	BlueAlgae
 
 }; 
 

@@ -1996,11 +1996,14 @@ MonoBehaviour:
   gameSizeX: 0
   gameSizeY: 0
   currentLevel: 0
+  levelsList: []
   playerPrefab: {fileID: 1039539819259692, guid: be4102e6ec02947d9b5f212108f9d118,
     type: 2}
   groundPrefab: {fileID: 1325900923434410, guid: 104b8c6d4a02441d99facbc2491a6296,
     type: 2}
   algaePrefab: {fileID: 1358865505608668, guid: e0229884b7b9049eeb5ef2686caa0cfb,
+    type: 2}
+  blueAlgaePrefab: {fileID: 1215513262826728, guid: 4c03d3acbb24644b6aae54b32ca3464a,
     type: 2}
   evilFishprefab: {fileID: 1455677229960492, guid: d9c305470d66d40f38a85ec77ed7aef9,
     type: 2}

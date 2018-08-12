@@ -39,6 +39,7 @@ public class BoardController : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject groundPrefab;
 	public GameObject algaePrefab;
+	public GameObject blueAlgaePrefab;
 	public GameObject evilFishprefab;
 	public GameObject groundBlockPrefab;
 	public GameObject groundDiagonalPrefab;
@@ -57,8 +58,8 @@ public class BoardController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		gameSizeX = 100;
-		gameSizeY = 100;
+		gameSizeX = 200;
+		gameSizeY = 200;
 
 		util = this.GetComponent<Util>();
 		util.InitDicts();
@@ -226,6 +227,12 @@ public class BoardController : MonoBehaviour {
 
 		tileDictionary [16] = TileEnum.Goal;
 
+		tileDictionary [17] = TileEnum.BlueAlgae;
+		tileDictionary [18] = TileEnum.BlueAlgae;
+		tileDictionary [19] = TileEnum.BlueAlgae;
+		tileDictionary [20] = TileEnum.BlueAlgae;
+
+
 	}
 
 	public void InitDegreesDict() {
@@ -250,6 +257,7 @@ public class BoardController : MonoBehaviour {
 		prefabDictionary[TileEnum.GroundDiagonal] = groundDiagonalPrefab;
 		prefabDictionary[TileEnum.Algae] = algaePrefab;
 		prefabDictionary[TileEnum.Goal] = goalPrefab;
+		prefabDictionary[TileEnum.BlueAlgae] = blueAlgaePrefab;
 
 	}
 
@@ -279,6 +287,11 @@ public class BoardController : MonoBehaviour {
 		directionDictionary [15] = Direction.Right;
 
 		directionDictionary [16] = Direction.None;
+
+		directionDictionary [17] = Direction.Down;
+		directionDictionary [18] = Direction.Left;
+		directionDictionary [19] = Direction.Up;
+		directionDictionary [20] = Direction.Right;
 
 	}
 
@@ -440,7 +453,7 @@ public class BoardController : MonoBehaviour {
      {
         var currAnimName = "";
         var clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-		AnimatorClipInfo aci = clipInfo[0]; // I haven't seen clipInfo be larger than one before
+		AnimatorClipInfo aci = clipInfo[0];
 
 		currAnimName = aci.clip.name;
         return currAnimName;
