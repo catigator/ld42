@@ -1961,6 +1961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1714783897}
   - component: {fileID: 1714783898}
+  - component: {fileID: 1714783899}
   m_Layer: 0
   m_Name: BoardController
   m_TagString: Untagged
@@ -2014,6 +2015,18 @@ MonoBehaviour:
   tilesObject: {fileID: 929088234}
   maxLevel: 0
   mc: {fileID: 0}
+  util: {fileID: 0}
+--- !u!114 &1714783899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714783896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b222c19fb88f645cda115ffab70b8e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776672059
 GameObject:
   m_ObjectHideFlags: 0
