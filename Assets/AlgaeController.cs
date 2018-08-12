@@ -6,6 +6,7 @@ public class AlgaeController : MonoBehaviour {
 
 	public BoardController bc;
 	public Position position;
+	public Direction direction;
 
 	// Use this for initialization
 	void Start () {

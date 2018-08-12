@@ -19,7 +19,9 @@ public class BoardController : MonoBehaviour {
 	public Dictionary<int, TileEnum> tileDictionary;
 	public Dictionary<TileEnum, GameObject> prefabDictionary;
 	public Dictionary<int, Direction> directionDictionary;
-	public Dictionary<Direction, float> degreesDict; 
+	public Dictionary<Direction, float> degreesDict;
+
+	public Dictionary<Direction, Direction> oppositeDirectionDict; 
 
 	public int gameSizeX;
 	public int gameSizeY;
@@ -56,6 +58,7 @@ public class BoardController : MonoBehaviour {
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
+		InitOppositeDirectionDict();
 		maxLevel = 3;
 		
 	}
@@ -169,6 +172,18 @@ public class BoardController : MonoBehaviour {
 
 	}
 
+	public void InitOppositeDirectionDict() {
+		oppositeDirectionDict = new Dictionary<Direction, Direction> ();
+
+		oppositeDirectionDict[Direction.Down] = Direction.Up;
+		oppositeDirectionDict[Direction.Left] = Direction.Right;
+		oppositeDirectionDict[Direction.Up] = Direction.Down;
+		oppositeDirectionDict[Direction.Right] = Direction.Left;
+
+		oppositeDirectionDict[Direction.None] = Direction.None;
+
+	}
+
 	public void InitPrefabDictionary() {
 		prefabDictionary = new Dictionary<TileEnum, GameObject> ();
 
@@ -211,9 +226,10 @@ public class BoardController : MonoBehaviour {
 
 	}
 
-	public void HandleAlgaeTile(GameObject obj, int x, int y) {
+	public void HandleAlgaeTile(GameObject obj, int x, int y, Direction dir) {
 		AlgaeController ac = obj.GetComponent<AlgaeController>();
 		ac.position = new Position(x, y);
+		ac.direction = dir;
 
 	}
 
@@ -299,7 +315,8 @@ public class BoardController : MonoBehaviour {
 						}
 
 						if (board[x][y] == TileEnum.Algae) {
-							HandleAlgaeTile(obj, x, y);
+							Direction oppositeDir = oppositeDirectionDict[directionBoard[x][y]];
+							HandleAlgaeTile(obj, x, y, oppositeDir);
 						}
 
 					} 
