@@ -10,7 +10,8 @@ public enum TileEnum {
 	GroundBlock,
 	GroundDiagonal,
 	Algae,
-	EvilFish
+	EvilFish,
+	Goal
 
 }; 
 

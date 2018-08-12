@@ -18,10 +18,11 @@ public class ShotCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.transform.tag != this.transform.tag) {
+		if (col.gameObject.layer != this.gameObject.layer) {
 			am.explosion.Play();
 			Debug.Log("TORPEDO TRIGGERED WITH " + col.transform.name);
-			if (col.transform.tag != "Ground") {
+			if (col.transform.tag != "Ground" && col.transform.tag != "Goal" 
+			&& col.transform.tag != "Player") {
 				Destroy(col.transform.gameObject);
 			}
 			GameObject newExplosion = Instantiate(

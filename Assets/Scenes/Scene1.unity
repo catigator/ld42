@@ -2007,10 +2007,13 @@ MonoBehaviour:
     type: 2}
   groundDiagonalPrefab: {fileID: 1076033613987050, guid: 17bbcde4009164c7ab6d36ddd2b550de,
     type: 2}
+  goalPrefab: {fileID: 1225708717405870, guid: 6ccd2a5fbd07f4e4c94c6b2cf9a3cc0e, type: 2}
   healthText: {fileID: 1564236087}
   levelText: {fileID: 1147098809}
   player: {fileID: 0}
   tilesObject: {fileID: 929088234}
+  maxLevel: 0
+  mc: {fileID: 0}
 --- !u!1 &1776672059
 GameObject:
   m_ObjectHideFlags: 0

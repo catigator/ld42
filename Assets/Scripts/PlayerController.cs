@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.transform.tag != this.transform.tag) {
+		if (col.gameObject.layer != this.gameObject.layer) {
 			am.playerHit.Play();
 			health -= 1;
 			SetHealthText();
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.transform.tag != this.transform.tag) {
+		if (col.gameObject.layer != this.gameObject.layer) {
 			am.playerHit.Play();
 			health -= 1;
 			SetHealthText();

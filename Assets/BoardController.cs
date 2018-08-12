@@ -38,6 +38,7 @@ public class BoardController : MonoBehaviour {
 	public GameObject evilFishprefab;
 	public GameObject groundBlockPrefab;
 	public GameObject groundDiagonalPrefab;
+	public GameObject goalPrefab;
 
 	public Text healthText;
 	public Text levelText;
@@ -45,15 +46,17 @@ public class BoardController : MonoBehaviour {
 	public GameObject tilesObject;
 	public int maxLevel;
 
+	public MenuController mc;
 
 	// Use this for initialization
 	void Start () {
+		mc = GameObject.Find("MenuController").GetComponent<MenuController>();
 		currentLevel = 0;
 		InitTileDictionary();
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
-		maxLevel = 2;
+		maxLevel = 3;
 		
 	}
 
@@ -70,6 +73,7 @@ public class BoardController : MonoBehaviour {
 		string levelBase = level.ToString();
 		if (level > maxLevel) {
 			levelBase = "1";
+			currentLevel = 1;
 		}
 
 		LoadLevel("Map" + levelBase +"_Ground", gameBoard);
@@ -149,6 +153,8 @@ public class BoardController : MonoBehaviour {
 		tileDictionary [14] = TileEnum.Algae;
 		tileDictionary [15] = TileEnum.Algae;
 
+		tileDictionary [16] = TileEnum.Goal;
+
 	}
 
 	public void InitDegreesDict() {
@@ -172,6 +178,7 @@ public class BoardController : MonoBehaviour {
 		prefabDictionary[TileEnum.GroundBlock] = groundBlockPrefab;
 		prefabDictionary[TileEnum.GroundDiagonal] = groundDiagonalPrefab;
 		prefabDictionary[TileEnum.Algae] = algaePrefab;
+		prefabDictionary[TileEnum.Goal] = goalPrefab;
 
 	}
 
@@ -199,6 +206,8 @@ public class BoardController : MonoBehaviour {
 		directionDictionary [13] = Direction.Left;
 		directionDictionary [14] = Direction.Up;
 		directionDictionary [15] = Direction.Right;
+
+		directionDictionary [16] = Direction.None;
 
 	}
 
