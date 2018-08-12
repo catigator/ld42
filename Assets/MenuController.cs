@@ -54,6 +54,12 @@ public class MenuController : MonoBehaviour {
 			GoToEndScreen();
 		}
 
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit();
+		}
+
+
+
 	}
 
 	public void ReturnToGame() {
