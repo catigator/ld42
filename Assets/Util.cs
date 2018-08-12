@@ -9,6 +9,10 @@ public class Util : MonoBehaviour {
 	public Dictionary<Direction, Direction> clockwiseDict;
 	public Dictionary<Direction, Direction> antiClockwiseDict; 
 
+	public List<TileEnum> blockList;
+
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +28,7 @@ public class Util : MonoBehaviour {
 		InitDirectionPositionDict();		
 		InitClockwiseDict();
 		InitAntiClockwiseDict();
+		InitBlockList();
 
 
 	}
@@ -69,4 +74,13 @@ public class Util : MonoBehaviour {
 		antiClockwiseDict[Direction.Down] = Direction.Right;
 		antiClockwiseDict[Direction.Left] = Direction.Down;
 	}
+
+	public void InitBlockList() {
+		blockList = new List<TileEnum> {
+			TileEnum.Ground,
+			TileEnum.GroundBlock,
+			TileEnum.GroundDiagonal
+		};
+	}
+
 }
