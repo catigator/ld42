@@ -31,6 +31,7 @@ public class BoardController : MonoBehaviour {
 	public TileEnum[][] objectBoard;
 	public Direction[][] directionBoard;
 	public Direction[][] directionGroundBoard;
+	public int[][] textIntBoard;
 	
 
 	public GameObject playerPrefab;
@@ -40,6 +41,7 @@ public class BoardController : MonoBehaviour {
 	public GameObject groundBlockPrefab;
 	public GameObject groundDiagonalPrefab;
 	public GameObject goalPrefab;
+	public GameObject textPrefab;
 
 	public Text healthText;
 	public Text levelText;
@@ -73,6 +75,7 @@ public class BoardController : MonoBehaviour {
 
 		gameBoard = InitGameBoard(gameBoard);
 		objectBoard = InitGameBoard(objectBoard);
+		textIntBoard = InitTextIntBoard(textIntBoard);
 
 		string levelBase = level.ToString();
 		if (level > maxLevel) {
@@ -86,12 +89,53 @@ public class BoardController : MonoBehaviour {
 		LoadLevel("Map" + levelBase +"_Enemies", objectBoard);
 		LoadLevel("Map" + levelBase +"_Objects", objectBoard);
 		MakeTiles(objectBoard);
+
+		LoadLevelInt("Map" + levelBase +"_Text", textIntBoard);
+		HandleTextIntBoard();
+
 		SetLevelText();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void HandleTextIntBoard() {
+		for (int x = 0; x < textIntBoard.Length; x++)
+		{
+			for (int y = 0; y < textIntBoard.Length; y++)
+			{
+				if (textIntBoard[x][y] != -1) {
+					GameObject obj = MakeTile(x, y, textPrefab);
+
+					HelpText ht = obj.GetComponent<HelpText>();
+					int textInt = textIntBoard[x][y];
+					ht.textInt = textInt;
+					ht.helpText = "Woo I'm helping\n" + textInt.ToString();
+					ht.SetHelpText();
+				}
+			}
+		}
+	}
+
+	int[][] InitTextIntBoard(int[][] board) {
+		gameSizeX = 50;
+		gameSizeY = 50;
+		board = new int[gameSizeX][];
+
+		for (int x = 0; x < gameSizeX; x++) {
+
+			board [x] = new int[gameSizeY];
+
+			for (int y = 0; y < gameSizeY; y++)
+			{
+				board [x][y] = -1;
+			}
+		}
+
+		return board;
+
 	}
 
 	TileEnum[][] InitGameBoard(TileEnum[][] board) {
@@ -272,6 +316,37 @@ public class BoardController : MonoBehaviour {
 
 			}
 
+		}			
+	}
+
+	public void LoadLevelInt(string level, int[][] board) {
+		Debug.Log(board);
+
+		Debug.Log ("Loading level int " + level);
+
+		TextAsset txt = (TextAsset)Resources.Load(level, typeof(TextAsset));
+		string filecontent = txt.text;
+		string[] lines = filecontent.Split("\n"[0]);
+		Debug.Log ("Loading LevelInt");
+
+		int size = lines.Length - 1;
+
+		for (int i_line = 0; i_line < lines.Length; i_line++)
+		{
+			int y = size - i_line - 1; // Yeeeah this is weird
+
+			string[] lineData = (lines[i_line].Trim()).Split(","[0]);
+
+			for (int i_col = 0; i_col < lineData.Length; i_col++)
+			{
+				if (lineData [i_col] != null && lineData [i_col] != "") {
+					int tileInt;
+					if (System.Int32.TryParse (lineData [i_col], out tileInt)) {
+						int x = i_col;
+						board[x][y] = tileInt;
+					}
+				}
+			}
 		}			
 	}
 
