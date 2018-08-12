@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 0}
+  position:
+    x: 0
+    y: 0
+  direction: 0
 --- !u!212 &212222231551902578
 SpriteRenderer:
   m_ObjectHideFlags: 1
