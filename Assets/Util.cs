@@ -77,9 +77,10 @@ public class Util : MonoBehaviour {
 
 	public void InitBlockList() {
 		blockList = new List<TileEnum> {
-			TileEnum.Ground,
+			// TileEnum.Ground,
 			TileEnum.GroundBlock,
-			TileEnum.GroundDiagonal
+			TileEnum.GroundDiagonal,
+			TileEnum.Algae
 		};
 	}
 
