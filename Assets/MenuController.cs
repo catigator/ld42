@@ -57,6 +57,7 @@ public class MenuController : MonoBehaviour {
 		GameTime.isPaused = false;
 			
 		startScreen.SetActive(false);
+		gameOverScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		gameScreen.SetActive(true);
 		bc.BeginLevel(bc.currentLevel + 1);
@@ -67,6 +68,7 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		gameOverScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		startScreen.GetComponent<StartScreenController>().ResetText();
 		startScreen.SetActive(true);
@@ -76,10 +78,20 @@ public class MenuController : MonoBehaviour {
 		KillAllTiles();
 		GameTime.isPaused = true;
 		gameScreen.SetActive(false);
+		gameOverScreen.SetActive(false);
 		betweenLevelsScreen.GetComponent<StartScreenController>().ResetText();
 		startScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(true);
+	}
 
+	public void GoToGameOverScreen() {
+		KillAllTiles();
+		GameTime.isPaused = true;
+		gameScreen.SetActive(false);
+		gameOverScreen.GetComponent<StartScreenController>().ResetText();
+		startScreen.SetActive(false);
+		betweenLevelsScreen.SetActive(false);
+		gameOverScreen.SetActive(true);
 
 	}
 

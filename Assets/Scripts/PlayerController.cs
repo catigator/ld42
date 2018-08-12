@@ -85,6 +85,10 @@ public class PlayerController : MonoBehaviour {
 			health -= 1;
 			SetHealthText();
 			Debug.Log("COLLIDED WITH " + col.transform.name);
+
+			if (health <= 0) {
+				bc.mc.GoToGameOverScreen();
+			}
 		}
 	}
 
@@ -94,6 +98,10 @@ public class PlayerController : MonoBehaviour {
 			health -= 1;
 			SetHealthText();
 			Debug.Log("TRIGGERED WITH " + col.transform.name);
+
+			if (health <= 0) {
+				bc.mc.GoToGameOverScreen();
+			}
 		}
 	}
 

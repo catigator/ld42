@@ -82,7 +82,8 @@ public class StartScreenController : MonoBehaviour {
 		} else if (screenEnum == ScreenEnum.End) {
 			mc.ReturnToGame();
 		} else if (screenEnum == ScreenEnum.GameOver) {
-			// SpaceGameOver();
+			mc.bc.currentLevel -= 1;
+			mc.ReturnToGame();
 		}  else if (screenEnum == ScreenEnum.BetweenLevels) {
 			SpaceBetweenLevels();
 		}
