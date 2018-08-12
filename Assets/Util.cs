@@ -80,7 +80,9 @@ public class Util : MonoBehaviour {
 			// TileEnum.Ground,
 			TileEnum.GroundBlock,
 			TileEnum.GroundDiagonal,
-			TileEnum.Algae
+			TileEnum.Algae,
+			TileEnum.Goal,
+			TileEnum.BlueAlgae
 		};
 	}
 

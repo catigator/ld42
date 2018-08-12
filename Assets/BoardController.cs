@@ -124,6 +124,8 @@ public class BoardController : MonoBehaviour {
 		levels[1].texts.Add("ROTATE WITH\nLEFT/RIGHT OR A/D");
 		levels[1].texts.Add("SHOOT WITH\n SPACE");
 		levels[1].texts.Add("ENTER PORTAL TO\nWARP!!\nTO NEXT ZONE");
+
+		levels[2].texts.Add("RED ALGEA\nGROWS\n& GROWS\n& GROWS");
 	}
 
 	void HandleTextIntBoard() {
