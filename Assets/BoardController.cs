@@ -48,18 +48,17 @@ public class BoardController : MonoBehaviour {
 		InitDirectionDictionary();
 		InitDegreesDict();
 		InitPrefabDictionary();
-
-		directionBoard = InitDirectionBoard(directionBoard);
-		directionGroundBoard = InitDirectionBoard(directionGroundBoard);
-
-
-		gameBoard = InitGameBoard(gameBoard);
-		objectBoard = InitGameBoard(objectBoard);
-
 		
 	}
 
 	public void BeginLevel() {
+
+		directionBoard = InitDirectionBoard(directionBoard);
+		directionGroundBoard = InitDirectionBoard(directionGroundBoard);
+
+		gameBoard = InitGameBoard(gameBoard);
+		objectBoard = InitGameBoard(objectBoard);
+
 		LoadLevel("Map1_Ground", gameBoard);
 		MakeTiles(gameBoard);
 		LoadLevel("Map1_Algae", objectBoard);
