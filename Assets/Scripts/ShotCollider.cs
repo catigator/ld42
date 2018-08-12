@@ -33,10 +33,15 @@ public class ShotCollider : MonoBehaviour {
 			&& col.transform.tag != "Player") {
 				Destroy(col.transform.gameObject);
 			}
-			GameObject newExplosion = Instantiate(
-					explosion, col.transform.position, transform.rotation) as GameObject;
-			newExplosion.transform.parent = this.transform.parent;
+			MakeExplosion(col.transform.position, transform.rotation, this.transform.parent);
 			Destroy(this.gameObject);
 		}
 	}
+
+	public void MakeExplosion(Vector3 pos, Quaternion rot, Transform parent) {
+		GameObject newExplosion = Instantiate(
+					explosion, pos, rot) as GameObject;
+			newExplosion.transform.parent = parent;
+	}
+
 }

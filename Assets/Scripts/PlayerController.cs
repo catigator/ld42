@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float maxSpeed;
 	public Vector3 moveDirection;
+	public Vector2 reflVelocity;
 	public float currentSpeed;
 
 	public AudioManager am;
@@ -22,6 +23,10 @@ public class PlayerController : MonoBehaviour {
 
 	public BoardController bc;
 
+	public float collisionSpeed;
+
+	public GameObject explosion;
+
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D>();
@@ -31,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		cf.FindPlayer();
 		bc = GameObject.Find("BoardController").GetComponent<BoardController>();
 		SetHealthText();
+		reflVelocity = new Vector2(0, 0);
 
 	}
 	
@@ -72,7 +78,9 @@ public class PlayerController : MonoBehaviour {
 				rb.velocity = currentVelocity;
 			} 
 		}
-		
+
+		// Debug.DrawLine(transform.position, (Vector2)transform.position + rb.velocity, Color.red);
+		// Debug.DrawLine(transform.position, (Vector2)transform.position + reflVelocity, Color.blue);
 	}
 
 	void SetHealthText() {
@@ -86,23 +94,41 @@ public class PlayerController : MonoBehaviour {
 			SetHealthText();
 			Debug.Log("COLLIDED WITH " + col.transform.name);
 
+			HandleReflection(col);
+
 			if (health <= 0) {
 				bc.mc.GoToGameOverScreen();
 			}
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.layer != this.gameObject.layer) {
-			am.playerHit.Play();
-			health -= 1;
-			SetHealthText();
-			Debug.Log("TRIGGERED WITH " + col.transform.name);
+	// void OnTriggerEnter2D(Collider2D col) {
+	// 	if (col.gameObject.layer != this.gameObject.layer) {
+	// 		am.playerHit.Play();
+	// 		health -= 1;
+	// 		SetHealthText();
+	// 		Debug.Log("TRIGGERED WITH " + col.transform.name);
 
-			if (health <= 0) {
-				bc.mc.GoToGameOverScreen();
-			}
-		}
+	// 		if (health <= 0) {
+	// 			bc.mc.GoToGameOverScreen();
+	// 		}
+	// 	}
+	// }
+
+	void HandleReflection(Collision2D col) {
+		Vector2 inDirection = rb.velocity;
+		Vector2 inNormal = col.contacts[0].normal;
+		reflVelocity = Vector2.Reflect(transform.right, inNormal);
+
+		Vector2 newVelocity = reflVelocity*3f; // + collisionSpeed*rb.velocity;
+		rb.velocity = newVelocity;
+		MakeExplosion(col.contacts[0].point, transform.rotation, this.transform.parent);
+	}
+
+	public void MakeExplosion(Vector3 pos, Quaternion rot, Transform parent) {
+		GameObject newExplosion = Instantiate(
+					explosion, pos, rot) as GameObject;
+			newExplosion.transform.parent = parent;
 	}
 
 }

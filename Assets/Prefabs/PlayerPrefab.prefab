@@ -172,12 +172,17 @@ MonoBehaviour:
   speed: 4
   maxSpeed: 7
   moveDirection: {x: 0, y: 0, z: 0}
+  reflVelocity: {x: 0, y: 0}
   currentSpeed: 0
   am: {fileID: 0}
   maxHealth: 10
   health: 0
   healthText: {fileID: 0}
   subFlame: {fileID: 212762147388442568}
+  cf: {fileID: 0}
+  bc: {fileID: 0}
+  collisionSpeed: 0.5
+  explosion: {fileID: 1089834842388178, guid: 3fd685c1d7d0543828b163548086d494, type: 2}
 --- !u!114 &114365750529570266
 MonoBehaviour:
   m_ObjectHideFlags: 1
