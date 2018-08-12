@@ -22,6 +22,8 @@ public class BoardController : MonoBehaviour {
 	public Dictionary<Direction, float> degreesDict;
 
 	public Dictionary<Direction, Direction> oppositeDirectionDict; 
+	public Dictionary<Direction, Position> directionPositionDict; 
+
 
 	public int gameSizeX;
 	public int gameSizeY;
@@ -59,6 +61,7 @@ public class BoardController : MonoBehaviour {
 		InitDegreesDict();
 		InitPrefabDictionary();
 		InitOppositeDirectionDict();
+		InitDirectionPositionDict();
 		maxLevel = 3;
 		
 	}
@@ -181,6 +184,18 @@ public class BoardController : MonoBehaviour {
 		oppositeDirectionDict[Direction.Right] = Direction.Left;
 
 		oppositeDirectionDict[Direction.None] = Direction.None;
+
+	}
+
+	public void InitDirectionPositionDict() {
+		directionPositionDict = new Dictionary<Direction, Position> ();
+
+		directionPositionDict[Direction.Down] = new Position(0, -1);
+		directionPositionDict[Direction.Left] = new Position(-1, 0);
+		directionPositionDict[Direction.Up] = new Position(0, 1);
+		directionPositionDict[Direction.Right] = new Position(1, 0);
+
+		directionPositionDict[Direction.None] = new Position(0, 0);
 
 	}
 
