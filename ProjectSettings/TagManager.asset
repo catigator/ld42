@@ -10,6 +10,8 @@ TagManager:
   - Goal
   - PlayerShot
   - BlueAlgae
+  - GreenKilla
+  - EnemyShot
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - VirtualScreen
   - Goal
   - BlueAlgae
-  - 
-  - 
+  - GreenKilla
+  - EnemyShot
   - 
   - 
   - 

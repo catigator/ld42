@@ -12,7 +12,8 @@ public enum TileEnum {
 	Algae,
 	EvilFish,
 	Goal,
-	BlueAlgae
+	BlueAlgae,
+	GreenKilla
 
 }; 
 

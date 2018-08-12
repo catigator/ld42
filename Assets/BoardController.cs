@@ -45,6 +45,7 @@ public class BoardController : MonoBehaviour {
 	public GameObject groundDiagonalPrefab;
 	public GameObject goalPrefab;
 	public GameObject textPrefab;
+	public GameObject greenKillaPrefab;
 
 	public Text healthText;
 	public Text levelText;
@@ -126,7 +127,7 @@ public class BoardController : MonoBehaviour {
 		levels[1].texts.Add("ENTER PORTAL TO\nWARP!!\nTO NEXT ZONE");
 
 		levels[2].texts.Add("RED ALGEA\nGROWS\n& GROWS\n& GROWS");
-		
+
 		levels[3].texts.Add("FISH\nARE\nEVIL");
 	}
 
@@ -236,6 +237,8 @@ public class BoardController : MonoBehaviour {
 		tileDictionary [19] = TileEnum.BlueAlgae;
 		tileDictionary [20] = TileEnum.BlueAlgae;
 
+		tileDictionary [21] = TileEnum.GreenKilla;
+
 
 	}
 
@@ -262,6 +265,7 @@ public class BoardController : MonoBehaviour {
 		prefabDictionary[TileEnum.Algae] = algaePrefab;
 		prefabDictionary[TileEnum.Goal] = goalPrefab;
 		prefabDictionary[TileEnum.BlueAlgae] = blueAlgaePrefab;
+		prefabDictionary[TileEnum.GreenKilla] = greenKillaPrefab;
 
 	}
 
@@ -296,6 +300,8 @@ public class BoardController : MonoBehaviour {
 		directionDictionary [18] = Direction.Left;
 		directionDictionary [19] = Direction.Up;
 		directionDictionary [20] = Direction.Right;
+
+		directionDictionary [21] = Direction.None;
 
 	}
 

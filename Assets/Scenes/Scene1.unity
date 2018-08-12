@@ -2522,6 +2522,8 @@ MonoBehaviour:
     type: 2}
   goalPrefab: {fileID: 1225708717405870, guid: 6ccd2a5fbd07f4e4c94c6b2cf9a3cc0e, type: 2}
   textPrefab: {fileID: 1266455207323402, guid: c42a7e5bd78024febbffc3d5185e3f69, type: 2}
+  greenKillaPrefab: {fileID: 1572380210463194, guid: f79c06b09086d45b6a275dbe883a275f,
+    type: 2}
   healthText: {fileID: 1564236087}
   levelText: {fileID: 1147098809}
   player: {fileID: 0}
