@@ -40,12 +40,14 @@ public class BoardController : MonoBehaviour {
 	public GameObject groundDiagonalPrefab;
 
 	public Text healthText;
+	public Text levelText;
 	public GameObject player;
 	public GameObject tilesObject;
 
 
 	// Use this for initialization
 	void Start () {
+		currentLevel = 0;
 		InitTileDictionary();
 		InitDirectionDictionary();
 		InitDegreesDict();
@@ -53,7 +55,9 @@ public class BoardController : MonoBehaviour {
 		
 	}
 
-	public void BeginLevel() {
+	public void BeginLevel(int level) {
+
+		currentLevel = level;
 
 		directionBoard = InitDirectionBoard(directionBoard);
 		directionGroundBoard = InitDirectionBoard(directionGroundBoard);
@@ -61,12 +65,16 @@ public class BoardController : MonoBehaviour {
 		gameBoard = InitGameBoard(gameBoard);
 		objectBoard = InitGameBoard(objectBoard);
 
-		LoadLevel("Map1_Ground", gameBoard);
+		string levelBase = level.ToString();
+		levelBase = "1";
+
+		LoadLevel("Map" + levelBase +"_Ground", gameBoard);
 		MakeTiles(gameBoard);
-		LoadLevel("Map1_Algae", objectBoard);
-		LoadLevel("Map1_Enemies", objectBoard);
-		LoadLevel("Map1_Objects", objectBoard);
+		LoadLevel("Map" + levelBase +"_Algae", objectBoard);
+		LoadLevel("Map" + levelBase +"_Enemies", objectBoard);
+		LoadLevel("Map" + levelBase +"_Objects", objectBoard);
 		MakeTiles(objectBoard);
+		SetLevelText();
 	}
 	
 	// Update is called once per frame
@@ -310,6 +318,10 @@ public class BoardController : MonoBehaviour {
         return currAnimName;
  
      }
+
+	 void SetLevelText() {
+		levelText.text = "ZONE:\n" + currentLevel.ToString();
+	}
 
 		
 }

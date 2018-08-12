@@ -59,7 +59,7 @@ public class MenuController : MonoBehaviour {
 		startScreen.SetActive(false);
 		betweenLevelsScreen.SetActive(false);
 		gameScreen.SetActive(true);
-		bc.BeginLevel();
+		bc.BeginLevel(bc.currentLevel + 1);
 
 	}
 

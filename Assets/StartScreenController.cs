@@ -39,6 +39,9 @@ public class StartScreenController : MonoBehaviour {
 		if (ogText == "") {
 			ogText = startText.text;
 		}
+		if (screenEnum == ScreenEnum.BetweenLevels) {
+			ogText = "ZONE " + (mc.bc.currentLevel + 1).ToString();
+		}
 		ogTypeSpeed = typeSpeed;
 		startText.text = "";
 		elapsedTime = 0f;
@@ -109,6 +112,9 @@ public class StartScreenController : MonoBehaviour {
 	public void ResetText() {
 		if (ogText == "") {
 			ogText = startText.text;
+		}
+		if (screenEnum == ScreenEnum.BetweenLevels) {
+			ogText = "ZONE " + (mc.bc.currentLevel + 1).ToString();
 		}
 		startText.text = "";
 		continueText.GetComponent<Text>().text = "";
