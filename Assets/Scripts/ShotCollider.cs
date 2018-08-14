@@ -58,7 +58,9 @@ public class ShotCollider : MonoBehaviour {
 			pc.HandleOtherReflection(this.GetComponent<Rigidbody2D>());
 		}
 
-		am.explosion.Play();
+		if (this.GetComponent<Renderer>().isVisible) {
+			am.explosion.Play();
+		}
 		MakeExplosion(col.transform.position, transform.rotation, this.transform.parent);
 		Destroy(this.gameObject);
 		Debug.Log("Should have destroyed " + this.transform.name);
